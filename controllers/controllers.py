@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 
-# class SetPriceFromMarrgin(http.Controller):
+# class SetPriceFromMargin(http.Controller):
 #     @http.route('/set_price_from_marrgin/set_price_from_marrgin/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"

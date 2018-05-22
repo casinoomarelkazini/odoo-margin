@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "set_price_from_marrgin",
+    'name': "set_price_from_margin",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Odoo module to set the price of product from the margin""",
 
     'description': """
-        Long description of module's purpose
+        Odoo module to set the price of product from the margin
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "B To Be Connect",
+    'website': "http://www.btbc.fr/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
@@ -20,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','sale'],
 
     # always loaded
     'data': [
