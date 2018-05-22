@@ -10,7 +10,8 @@ _logger = logging.getLogger(__name__)
 class SetPriceFromMargin(models.Model):
     _inherit = 'product.template'
 
-    margin = fields.Float(digits=dp.get_precision('Product Price'))
+    # margin = fields.Float(digits=dp.get_precision('Product margin'))
+    margin = fields.Float()
     type_margin = fields.Selection([
         ('rate', 'Rate'),
         ('amount', 'Amount')
