@@ -11,7 +11,7 @@ class SetPriceFromMargin(models.Model):
     type_margin = fields.Selection([
         ('rate', 'Rate'),
         ('amount', 'Amount')
-    ])
+    ], default="rate")
     list_price = fields.Float(compute='_set_list_price', digits=dp.get_precision('Product Price'))
 
     #
