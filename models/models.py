@@ -2,6 +2,9 @@
 
 from odoo import models, fields, api
 from odoo.addons import decimal_precision as dp
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class SetPriceFromMargin(models.Model):
@@ -11,8 +14,7 @@ class SetPriceFromMargin(models.Model):
     type_margin = fields.Selection([
         ('rate', 'Rate'),
         ('amount', 'Amount')
-    ], default="rate")
-    list_price = fields.Float(compute='_set_list_price', digits=dp.get_precision('Product Price'))
+    ])
 
     #
     @api.depends('margin')
@@ -40,11 +42,13 @@ class SetPriceFromMargin(models.Model):
 
     # Calculation of price
     def price_calculation(self):
-        tmp_price = 0
         for price in self:
+            tmp_price = price.list_price
+
+            # if price.margin > 0:
             if price.type_margin == 'rate':
-                tmp_price = float(price.standard_price) * (1 + (float(price.margin) / 100))
+                tmp_price = float(price.list_price) * (1 + (float(price.margin) / 100))
             else:
-                tmp_price = float(price.standard_price) + float(price.margin)
+                tmp_price = float(price.list_price) + float(price.margin)
 
         return tmp_price
