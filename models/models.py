@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
 from odoo.addons import decimal_precision as dp
@@ -10,8 +9,8 @@ _logger = logging.getLogger(__name__)
 class SetPriceFromMargin(models.Model):
     _inherit = 'product.template'
 
-    # margin = fields.Float(digits=dp.get_precision('Product margin'))
-    margin = fields.Float()
+    margin = fields.Float(digits=dp.get_precision('Product margin'))
+   # margin = fields.Float()
     type_margin = fields.Selection([
         ('rate', 'Rate'),
         ('amount', 'Amount')
@@ -52,3 +51,9 @@ class SetPriceFromMargin(models.Model):
                 tmp_price = price.list_price
 
         return tmp_price
+
+class CustomCategory(models.Model):
+    _inherit = 'product.category'  # Inherit from the product.category model
+
+    custom_margin = fields.Float(string="Margin")
+
